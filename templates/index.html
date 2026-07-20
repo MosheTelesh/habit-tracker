@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Habit Tracker</title>
+</head>
+<body>
+    <h1>My habits</h1>
+    <ul>
+        {% for habit in habits %}
+            <li>
+                {{ habit['name'] }} - Done: {{ 'Yes' if habit['done'] else 'No' }}
+                <form action="/done" method="post" style="display:inline; margin-left: 0.5rem;">
+                    <input type="hidden" name="id" value="{{ habit['id'] }}">
+                    <button type="submit">{{ 'Undo' if habit['done'] else 'Done' }}</button>
+                </form>
+                <form action="/delete" method="post" style="display:inline; margin-left: 0.5rem;">
+                    <input type="hidden" name="id" value="{{ habit['id'] }}">
+                    <button type="submit">Delete</button>
+                </form>
+                <form action="/edit" method="get" style="display:inline; margin-left: 0.5rem;">
+                    <input type="hidden" name="id" value="{{ habit['id'] }}">
+                    <button type="submit">Edit</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="/add">Add habit</a>
+</body>
+</html>  

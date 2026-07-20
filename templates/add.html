@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta charset="UTF-8">
+    <title>Add Habit</title>
+</head>
+<body>
+    <h1>Add Habit</h1>
+    <form method="post">
+        <input name="name" placeholder="Habit name" required>
+        <button type="submit">Add</button>
+    </form>
+    <a href="/">Back</a>
+</body>
+</html>
